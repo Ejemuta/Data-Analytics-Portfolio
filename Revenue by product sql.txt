@@ -1,0 +1,16 @@
+-- Revenue by product
+SELECT ProductID, SUM(Price_USD * UnitsSold) AS TotalRevenue
+FROM price_sensitivity
+GROUP BY ProductID
+ORDER BY TotalRevenue DESC;
+
+-- Impact of promotions on sales
+SELECT PromotionFlag, AVG(UnitsSold) AS AvgUnits
+FROM price_sensitivity
+GROUP BY PromotionFlag;
+
+-- Weekly revenue trend
+SELECT DATE_TRUNC('week', Date) AS Week, SUM(Price_USD * UnitsSold) AS WeeklyRevenue
+FROM price_sensitivity
+GROUP BY Week
+ORDER BY Week;

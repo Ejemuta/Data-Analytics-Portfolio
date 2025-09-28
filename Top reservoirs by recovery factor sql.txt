@@ -1,0 +1,13 @@
+-- Top reservoirs by recovery factor
+SELECT ReservoirID, RecoveryFactor_pct
+FROM reservoir_kpi
+ORDER BY RecoveryFactor_pct DESC;
+
+-- Cost efficiency (production vs cost)
+SELECT ReservoirID, CumulativeProduction_mmbbl / OperatingCost_USD AS Efficiency
+FROM reservoir_kpi
+ORDER BY Efficiency DESC;
+
+-- Correlation between water cut and production
+SELECT ReservoirID, WaterCut_pct, ProductionRate_bbl_per_day
+FROM reservoir_kpi;

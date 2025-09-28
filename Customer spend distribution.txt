@@ -1,0 +1,18 @@
+-- Customer spend distribution
+SELECT 
+  CASE 
+    WHEN PurchaseHistory_Value < 1000 THEN 'Low Spender'
+    WHEN PurchaseHistory_Value BETWEEN 1000 AND 5000 THEN 'Mid Spender'
+    ELSE 'High Spender'
+  END AS Segment,
+  COUNT(*) AS NumCustomers
+FROM customer_segmentation
+GROUP BY Segment;
+
+-- Avg loyalty points by age group
+SELECT 
+  FLOOR(Age/10)*10 AS AgeGroup,
+  AVG(LoyaltyPoints) AS AvgPoints
+FROM customer_segmentation
+GROUP BY AgeGroup
+ORDER BY AgeGroup;

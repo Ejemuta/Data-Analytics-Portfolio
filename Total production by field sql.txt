@@ -1,0 +1,15 @@
+-- Total production by field
+SELECT Field, SUM(Daily_Production_bbl) AS TotalProduction
+FROM oilfield_production
+GROUP BY Field;
+
+-- Average downtime by well
+SELECT Well, AVG(Downtime_hours) AS AvgDowntime
+FROM oilfield_production
+GROUP BY Well;
+
+-- Monthly production trend
+SELECT DATE_TRUNC('month', Date) AS Month, SUM(Daily_Production_bbl) AS MonthlyProduction
+FROM oilfield_production
+GROUP BY Month
+ORDER BY Month;

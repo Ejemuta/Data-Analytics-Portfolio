@@ -1,0 +1,17 @@
+-- Total sales by store
+SELECT StoreID, SUM(SalesValue) AS TotalSales
+FROM retail_sales
+GROUP BY StoreID
+ORDER BY TotalSales DESC;
+
+-- Best-selling product categories
+SELECT ProductCategory, SUM(UnitsSold) AS TotalUnits
+FROM retail_sales
+GROUP BY ProductCategory
+ORDER BY TotalUnits DESC;
+
+-- Sales trend by region
+SELECT Region, DATE_TRUNC('week', Date) AS Week, SUM(SalesValue) AS WeeklySales
+FROM retail_sales
+GROUP BY Region, Week
+ORDER BY Week;
